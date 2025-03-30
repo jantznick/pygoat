@@ -73,10 +73,10 @@ def log_function_checker(request):
         f.close()
         url = "http://127.0.0.1:8000/2021/discussion/A9/target"
         payload={'csrfmiddlewaretoken': csrf_token }
-        requests.request("GET", url)
-        requests.request("POST", url)
-        requests.request("PATCH", url, data=payload)
-        requests.request("DELETE", url)
+        requests.request("GET", url, timeout=60)
+        requests.request("POST", url, timeout=60)
+        requests.request("PATCH", url, data=payload, timeout=60)
+        requests.request("DELETE", url, timeout=60)
         f = open('test.log', 'r')
         lines = f.readlines()
         f.close()
